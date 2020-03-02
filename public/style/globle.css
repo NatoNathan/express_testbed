@@ -1,0 +1,22 @@
+:root {
+    --main-size: 12pt;
+
+    --main-text-font: 'Courier New', Courier, monospace;
+
+    --main-text-color: hsl(212, 55%, 12%);
+    --main-link-color: hsl(138, 71%, 38%);
+
+
+    --main-bg-color: hsl(182, 61%, 81%);
+}
+
+html {
+    font-family: var(--main-text-font);
+    font-size: var(--main-size);
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+a {
+    color: var(--main-link-color);
+}

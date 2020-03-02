@@ -1,0 +1,13 @@
+{
+  "name": "express_testApp",
+  "version": "0.0.1",
+  "description": "just a test of express",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "pouchdb": "^7.2.1",
+    "pouchdb-find": "^7.2.1"
+  }
+}

@@ -1,0 +1,19 @@
+div.app {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    padding: 10px 40px;
+}
+
+div.flexbox-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+div.flexbox-container>div.flexbox-element {
+    padding: 5px 10px;
+}
