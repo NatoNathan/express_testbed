@@ -1,67 +1,77 @@
 const express = require("express");
+const UserController = require("../controllers/user");
 const router = express.Router();
-const PouchDB = require("pouchdb");
 
-let db = PouchDB("user");
+const user = new UserController();
 
 router.get("/", function(req, res) {
-  db.allDocs()
+  user
+    .getAllUsers()
     .then(function(response) {
       res.json(response);
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send({ error: "something blew up", reason: err.reason });
+      res.status(500).send({
+        error: "something blew up",
+        reason: err.reason
+      });
     });
 });
 router.get("/:userid", function(req, res) {
-  db.get(req.params.userid)
+  user
+    .getUser(req.params.userid)
     .then(function(doc) {
       res.json(doc);
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send({ error: "something blew up", reason: err.reason });
+      res.status(500).send({
+        error: "something blew up",
+        reason: err.reason
+      });
     });
 });
 router.post("/", function(req, res) {
-  db.put(req.body)
+  user
+    .addUser(req.body)
     .then(function(response) {
       res.json(response);
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send({ error: "something blew up", reason: err.reason });
+      res.status(500).send({
+        error: "something blew up",
+        reason: err.reason
+      });
     });
 });
 router.put("/:userid", function(req, res) {
-  db.get(req.params.userid)
-    .then(function(doc) {
-      return db.put({
-        _id: req.params.userid,
-        _rev: doc._rev,
-        ...req.body
-      });
-    })
+  user
+    .updateUser(req.params.userid, req.body)
     .then(function(response) {
       res.json(response);
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send({ error: "something blew up", reason: err.reason });
+      res.status(500).send({
+        error: "something blew up",
+        reason: err.reason
+      });
     });
 });
 router.delete("/:userid", function(req, res) {
-  db.get(req.params.userid)
-    .then(function(doc) {
-      return db.remove(doc);
-    })
+  user
+    .deleteUser(req.params.userid)
     .then(function(result) {
       res.json(result);
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send({ error: "something blew up", reason: err.reason });
+      res.status(500).send({
+        error: "something blew up",
+        reason: err.reason
+      });
     });
 });
 
