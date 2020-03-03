@@ -5,6 +5,7 @@ const router = express.Router();
 const user = new UserController();
 
 router.get("/", function(req, res) {
+  // GET localhost:8080/api/user
   user
     .getAllUsers()
     .then(function(response) {
@@ -19,6 +20,7 @@ router.get("/", function(req, res) {
     });
 });
 router.get("/:userid", function(req, res) {
+  //GET localhost:8080/api/user/{userID}
   user
     .getUser(req.params.userid)
     .then(function(doc) {
@@ -33,6 +35,7 @@ router.get("/:userid", function(req, res) {
     });
 });
 router.post("/", function(req, res) {
+  // POST localhost:8080/api/user
   user
     .addUser(req.body)
     .then(function(response) {
@@ -47,6 +50,7 @@ router.post("/", function(req, res) {
     });
 });
 router.put("/:userid", function(req, res) {
+  // PUT localhost:8080/api/user/{userID}
   user
     .updateUser(req.params.userid, req.body)
     .then(function(response) {
@@ -61,6 +65,7 @@ router.put("/:userid", function(req, res) {
     });
 });
 router.delete("/:userid", function(req, res) {
+  // DELETE localhost:8080/api/user/{userID}
   user
     .deleteUser(req.params.userid)
     .then(function(result) {

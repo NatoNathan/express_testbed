@@ -1,20 +1,43 @@
-const app = document.querySelector("#app");
+function addUser() {
+  const data = {
+    _id: "69",
+    f_name: "tim",
+    l_name: "apple",
+    email: "tim.apple@apple.com",
+    alias: { f_name: "Tim", l_name: "Cook" }
+  };
 
-const a = ["Java", "JS", "C", "CPP", "Haskell"];
-const unorderdlist = document.createElement("ul");
+  const request = fetch("http://localhost:8080/api/user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
 
-for (let i = 0; i <= 4; i++) {
-  const lable = a[i];
-  const radio = document.createElement("input");
-  radio.type = "radio";
-  const span = document.createElement("span");
-  span.textContent = lable;
-  const lableEl = document.createElement("label");
-  lableEl.appendChild(radio);
-  lableEl.appendChild(span);
-  const li = document.createElement("li");
-  li.appendChild(lableEl);
-  unorderdlist.appendChild(li);
+  request
+    .then(rsp => {
+      console.log(rsp);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
-app.appendChild(unorderdlist);
-app.appendChild();
+
+async function updateUser(userID, data) {
+  const rsp = await fetch("http://localhost:8080/api/user/" + userID, {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  try {
+    console.log(rsp);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+addUser();
