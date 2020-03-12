@@ -1,6 +1,5 @@
 function addUser() {
   const data = {
-    _id: "69",
     f_name: "tim",
     l_name: "apple",
     email: "tim.apple@apple.com",
