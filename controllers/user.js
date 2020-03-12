@@ -12,7 +12,7 @@ class UserController {
   }
   async addUser(userData) {
     const id = this.generateID();
-    return await this.db.put({ ID: id, ...userData });
+    return await this.db.put({ _id: id, ...userData });
   }
   async updateUser(userID, userData) {
     const user = await this.getUser(userID);
