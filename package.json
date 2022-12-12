@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "pouchdb": "^7.2.1",
     "pouchdb-find": "^7.2.1",
     "uuid": "^7.0.2"
